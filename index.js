@@ -8,6 +8,7 @@ var app = express();
 app.get("/", (req, res) => {
   res.send("server start");
 });
+app.use(cors());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -27,14 +28,14 @@ module.exports.cors = {
   methods: 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
   headers: 'content-type'
 };
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     preflightContinue: false,
+//     optionsSuccessStatus: 204,
+//   })
+// );
 app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
