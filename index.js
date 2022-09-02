@@ -20,8 +20,20 @@ app.use((req, res, next) => {
   }
   next();
 });
+module.exports.cors = {
+  allRoutes: true,
+  origin: '*',
+  credentials: true,
+  methods: 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+  headers: 'content-type'
+};
 app.use(
-  cors()
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
 );
 app.use(express.json());
 app.use("/api/user", router);
