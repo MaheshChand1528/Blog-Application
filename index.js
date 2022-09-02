@@ -11,15 +11,14 @@ app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
 
 const PORT = process.env.PORT || 5000;
+const DB = process.env.DATABASE;
 
 app.get("/", (req, res) => {
   res.send("server start");
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://admin:OcmGNASJxzXjndzx@cluster0.cwwdzqo.mongodb.net/Blog?retryWrites=true&w=majority"
-  )
+  .connect(DB)
   .then(
     app.listen(PORT, () => {
       console.log(`connected and listening on ${PORT}`);
