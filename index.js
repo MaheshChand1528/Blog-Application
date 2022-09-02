@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import blogRouter from "./routes/blog-routes";
+import blogRouter from "./routes/blog-routess";
 import router from "./routes/user-routes";
 import cors from "cors";
 
@@ -20,7 +20,7 @@ mongoose
   .connect(DB)
   .then(
     app.listen(PORT, () => {
-      console.log(`connected and listening on ${PORT}`);
+      console.log(`connected and listening on http://localhost:${PORT}`);
     })
   )
   .catch((err) => {
