@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
-import blogRouter from "./routes/blog-routess";
-import router from "./routes/user-routes";
+import blogRouter from "./routes/blog-routess.js";
+import router from "./routes/user-routes.js";
 import cors from "cors";
 
 var app = express();
