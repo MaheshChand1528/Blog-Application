@@ -10,7 +10,11 @@ app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
 
-const PORT= process.env.PORT || 5000 || 8000 || 3000;
+const PORT = process.env.PORT || 5000 || 8000 || 3000;
+
+app.get("/", (req, res) => {
+  res.json("server start");
+});
 
 mongoose
   .connect(
