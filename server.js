@@ -4,13 +4,13 @@ import blogRouter from "./routes/blog-routes";
 import router from "./routes/user-routes";
 import cors from "cors";
 
-const app = express();
+var app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
 
-const PORT=process.env.PORT || 3000;
+const PORT= process.env.PORT || 5000;
 
 mongoose
   .connect(
