@@ -8,16 +8,26 @@ var app = express();
 app.get("/", (req, res) => {
   res.send("server start");
 });
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
-app.use(cors({
-  origin:"*",
-  methods:['GET','POST','PUT','DELETE'],
-}));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
