@@ -8,7 +8,9 @@ var app = express();
 app.get("/", (req, res) => {
   res.send("server start");
 });
-app.use(cors());
+app.use(cors({
+  origin:"*",
+}));
 app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
