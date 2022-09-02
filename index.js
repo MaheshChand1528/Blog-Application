@@ -10,13 +10,15 @@ app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
 
+const PORT=process.env.PORT || 3000;
+
 mongoose
   .connect(
     "mongodb+srv://admin:OcmGNASJxzXjndzx@cluster0.cwwdzqo.mongodb.net/Blog?retryWrites=true&w=majority"
   )
   .then(
-    app.listen(5000, () => {
-      console.log("connected and listening on http://localhost:5000/");
+    app.listen(PORT, () => {
+      console.log(`connected and listening on ${PORT}`);
     })
   )
   .catch((err) => {
